@@ -21,6 +21,20 @@
 - Langfuse 自部署观测、数据飞轮、按意图的成本账
 - 主题分类器：造语料、微调、阈值扫描、ONNX 推理服务
 
+## 整体架构
+
+一张图看完上下游：请求从**前端工作台**进来，经 **FastAPI 接口层**进到 **LangGraph 确定性工作流** ——
+会话准备 → 指代消解 → 九类意图识别，再按「投诉/闲聊」「商品咨询」「订单/物流/人工」「退款/售后」四个出口分流。
+商品咨询走知识检索（Query 改写 / 混合召回 / 重排与证据门控），**证据充分才进主力 Agent 的 ReAct 环**，
+不足则兜底并记下知识缺口；退款要先校验订单归属，缺单号就 `interrupt` 让用户选单再 `resume`。
+右侧是知识迭代与运营的闭环（源文档 / 历史会话 → 切块审核 → MySQL 与 Milvus 双写 → 用户负反馈与低置信度问题池 → 批处理查重 → 人工核准写回），
+底部是支撑服务：MySQL、Milvus、SQLite checkpointer 与模型服务 / Langfuse。
+
+<img src="docs/ui-redesign/architecture.png" width="900" alt="知序客服 · 整体架构与业务流程">
+
+> 可编辑源文件与矢量版：[architecture.mmd](docs/ui-redesign/architecture.mmd) · [architecture.svg](docs/ui-redesign/architecture.svg)。
+> 图上每个节点都对得上代码：`app/graph/{build,routing,nodes,runtime}.py` · `app/api/` · `app/kb/` · `app/tools/`。
+
 ## 界面速览
 
 下面每一张都是**本机真实运行**的截图：真模型、真 MySQL / Milvus、真 MCP 工具，接口没有 mock。
