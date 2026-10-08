@@ -1,0 +1,188 @@
+{"id": "W01", "intent": "物流", "query": "我的包裹现在到哪了", "tags": ["clear"]}
+{"id": "W02", "intent": "物流", "query": "订单1001发货了吗", "tags": ["clear"]}
+{"id": "W03", "intent": "物流", "query": "快递单号 SF123456 帮我查下", "tags": ["clear"]}
+{"id": "W04", "intent": "物流", "query": "怎么还没收到货,物流停了好几天", "tags": ["clear"]}
+{"id": "W05", "intent": "物流", "query": "我的快递显示已签收但我没收到", "tags": ["clear"]}
+{"id": "W06", "intent": "物流", "query": "麻烦看下我那个件到哪了", "tags": ["clear"]}
+{"id": "W07", "intent": "物流", "query": "昨天下的单什么时候能发出", "tags": ["clear"]}
+{"id": "W08", "intent": "物流", "query": "物流信息一直不更新", "tags": ["clear"]}
+{"id": "W09", "intent": "物流", "query": "能帮我催一下快递吗", "tags": ["clear"]}
+{"id": "W10", "intent": "物流", "query": "我的东西现在在路上吗", "tags": ["clear"]}
+{"id": "W11", "intent": "物流", "query": "到深圳还要几天", "tags": ["boundary"], "ambiguous": true, "note": "无主语('谁的件'),单看像泛问时效;判物流要假设用户在问自己在途的件"}
+{"id": "W12", "intent": "物流", "query": "能把运单号发我吗", "tags": ["boundary"], "ambiguous": true, "note": "请求式措辞('发我')易被吸到'人工';实为查运单号,归物流"}
+{"id": "W13", "intent": "物流", "query": "快递怎么被退回了", "tags": ["clear"]}
+{"id": "W14", "intent": "物流", "query": "我买的猫砂盆发出来了没有", "tags": ["clear"]}
+{"id": "W15", "intent": "物流", "query": "显示派送中,大概几点送到", "tags": ["clear"]}
+{"id": "W16", "intent": "物流", "query": "物流信息怎么不动了", "tags": ["clear"]}
+{"id": "W17", "intent": "物流", "query": "麻烦告诉我快递到哪个城市了", "tags": ["clear"]}
+{"id": "W18", "intent": "物流", "query": "这个订单的物流状态", "tags": ["clear"]}
+{"id": "W19", "intent": "物流", "query": "我的件是不是丢了啊", "tags": ["clear"]}
+{"id": "W20", "intent": "物流", "query": "什么时候能发货,等好久了", "tags": ["clear"]}
+{"id": "O01", "intent": "订单", "query": "订单2002现在什么状态", "tags": ["clear"]}
+{"id": "O02", "intent": "订单", "query": "我上周下的单多少钱来着", "tags": ["clear"]}
+{"id": "O03", "intent": "订单", "query": "帮我查下我买的是什么", "tags": ["clear"]}
+{"id": "O04", "intent": "订单", "query": "订单1001总共付了多少钱", "tags": ["clear"]}
+{"id": "O05", "intent": "订单", "query": "我什么时候下的单", "tags": ["clear"]}
+{"id": "O06", "intent": "订单", "query": "我的订单列表能看下吗", "tags": ["clear"]}
+{"id": "O07", "intent": "订单", "query": "我这个订单号是多少", "tags": ["boundary"], "ambiguous": true, "note": "问的是订单编号(数据)而不是状态,易被判成'人工'代办"}
+{"id": "O08", "intent": "订单", "query": "这单是什么时候创建的", "tags": ["clear"]}
+{"id": "O09", "intent": "订单", "query": "我买的那个猫窝是哪个订单", "tags": ["clear"]}
+{"id": "O10", "intent": "订单", "query": "订单金额对吗", "tags": ["clear"]}
+{"id": "O11", "intent": "订单", "query": "我昨天是不是下了两单", "tags": ["clear"]}
+{"id": "O12", "intent": "订单", "query": "帮我确认下订单信息", "tags": ["clear"]}
+{"id": "O13", "intent": "订单", "query": "订单1001里都有啥", "tags": ["clear"]}
+{"id": "O14", "intent": "订单", "query": "那个单子显示多少钱", "tags": ["clear"]}
+{"id": "O15", "intent": "订单", "query": "我的历史订单在哪看", "tags": ["clear"]}
+{"id": "O16", "intent": "订单", "query": "这单的收货人是谁", "tags": ["clear"]}
+{"id": "O17", "intent": "订单", "query": "订单状态怎么还是待发货", "tags": ["boundary"], "ambiguous": true, "note": "'怎么还是'带抱怨,易被判'投诉';'待发货'又属物流环节;按查询主体归订单"}
+{"id": "O18", "intent": "订单", "query": "我买了几件", "tags": ["clear"]}
+{"id": "O19", "intent": "订单", "query": "我这个单子能改收货信息吗", "tags": ["boundary"], "ambiguous": true, "note": "'能改吗'是可行性问句,像商品咨询;但操作对象是订单,归订单"}
+{"id": "O20", "intent": "订单", "query": "帮我查下最近三笔订单", "tags": ["clear"]}
+{"id": "C01", "intent": "商品咨询", "query": "这款猫粮多少钱一包", "tags": ["clear"]}
+{"id": "C02", "intent": "商品咨询", "query": "退货运费一般谁承担", "tags": ["clear"], "note": "与原评估集同句,但与 few-shot 的差异在于原评估集已用它;保留以做对照"}
+{"id": "C03", "intent": "商品咨询", "query": "猫砂盆的尺寸是多少", "tags": ["clear"]}
+{"id": "C04", "intent": "商品咨询", "query": "有没有材质好一点的猫抓板", "tags": ["clear"]}
+{"id": "C05", "intent": "商品咨询", "query": "支持几天无理由退货", "tags": ["clear"]}
+{"id": "C06", "intent": "商品咨询", "query": "你们包邮吗", "tags": ["clear"]}
+{"id": "C07", "intent": "商品咨询", "query": "会员有什么权益", "tags": ["clear"]}
+{"id": "C08", "intent": "商品咨询", "query": "这个猫窝能承重多少", "tags": ["clear"]}
+{"id": "C09", "intent": "商品咨询", "query": "保修期一般是多久", "tags": ["boundary"], "ambiguous": true, "note": "问的是'政策是什么',不是'我要修';'保修'关键词易被吸到'售后'"}
+{"id": "C10", "intent": "商品咨询", "query": "你们发什么快递", "tags": ["clear"]}
+{"id": "C11", "intent": "商品咨询", "query": "发票怎么开", "tags": ["clear"]}
+{"id": "C12", "intent": "商品咨询", "query": "能不能开发票", "tags": ["clear"]}
+{"id": "C13", "intent": "商品咨询", "query": "尺码怎么选", "tags": ["clear"]}
+{"id": "C14", "intent": "商品咨询", "query": "这款有几个颜色", "tags": ["clear"]}
+{"id": "C15", "intent": "商品咨询", "query": "宠物食品的保质期一般多长", "tags": ["clear"]}
+{"id": "C16", "intent": "商品咨询", "query": "退货要自己出运费吗", "tags": ["boundary"], "ambiguous": true, "note": "问的是运费规则(咨询);含'退货'关键词,极易被吸到'退款退货'——与 R20 构成同一易混对的反向样例"}
+{"id": "C17", "intent": "商品咨询", "query": "积分怎么用", "tags": ["clear"]}
+{"id": "C18", "intent": "商品咨询", "query": "优惠券能叠加吗", "tags": ["clear"]}
+{"id": "C19", "intent": "商品咨询", "query": "支持哪些支付方式", "tags": ["clear"]}
+{"id": "C20", "intent": "商品咨询", "query": "你们家有没有实体店", "tags": ["clear"]}
+{"id": "R01", "intent": "退款退货", "query": "我要退货", "tags": ["clear"]}
+{"id": "R02", "intent": "退款退货", "query": "这个订单还能申请退款吗", "tags": ["clear"]}
+{"id": "R03", "intent": "退款退货", "query": "帮我把订单1001退了", "tags": ["clear"]}
+{"id": "R04", "intent": "退款退货", "query": "我要退这个猫窝", "tags": ["clear"]}
+{"id": "R05", "intent": "退款退货", "query": "申请退款怎么操作", "tags": ["clear"]}
+{"id": "R06", "intent": "退款退货", "query": "我的订单能退吗", "tags": ["clear"]}
+{"id": "R07", "intent": "退款退货", "query": "不想买了,给我退款", "tags": ["clear"]}
+{"id": "R08", "intent": "退款退货", "query": "退货流程怎么走", "tags": ["boundary"], "ambiguous": true, "note": "'流程怎么走'是问规则,像商品咨询;但主体是退货动作,归退款退货——与 C09/C16 反向"}
+{"id": "R09", "intent": "退款退货", "query": "昨天买的那个帮我退了吧", "tags": ["clear"]}
+{"id": "R10", "intent": "退款退货", "query": "我要申请售后,直接退款", "tags": ["boundary"], "ambiguous": true, "note": "同句含'售后'与'退款'两个类目词;按诉求(要退款)定类,不按首个关键词"}
+{"id": "R11", "intent": "退款退货", "query": "这个不要了,退钱", "tags": ["clear"]}
+{"id": "R12", "intent": "退款退货", "query": "订单2002我要退", "tags": ["clear"]}
+{"id": "R13", "intent": "退款退货", "query": "我上周退的款怎么还没到账", "tags": ["clear"]}
+{"id": "R14", "intent": "退款退货", "query": "我要退单", "tags": ["clear"]}
+{"id": "R15", "intent": "退款退货", "query": "这一单能退货吗", "tags": ["clear"]}
+{"id": "R16", "intent": "退款退货", "query": "帮我取消订单并退款", "tags": ["clear"]}
+{"id": "R17", "intent": "退款退货", "query": "我买错了想退货", "tags": ["clear"]}
+{"id": "R18", "intent": "退款退货", "query": "东西不合适,退掉", "tags": ["clear"]}
+{"id": "R19", "intent": "退款退货", "query": "这单能退不能退", "tags": ["clear"]}
+{"id": "R20", "intent": "退款退货", "query": "申请退货需要什么条件", "tags": ["boundary"], "ambiguous": true, "note": "'需要什么条件'是问规则,像商品咨询;但主体是申请退货,归退款退货"}
+{"id": "S01", "intent": "售后", "query": "换新进度到哪了", "tags": ["clear"]}
+{"id": "S02", "intent": "售后", "query": "猫窝的拉链坏了能修吗", "tags": ["clear"]}
+{"id": "S03", "intent": "售后", "query": "我这个还在保修期内吗", "tags": ["clear"]}
+{"id": "S04", "intent": "售后", "query": "换货怎么办", "tags": ["clear"]}
+{"id": "S05", "intent": "售后", "query": "我的猫砂盆坏了想换新", "tags": ["clear"]}
+{"id": "S06", "intent": "售后", "query": "维修要多久", "tags": ["clear"]}
+{"id": "S07", "intent": "售后", "query": "这个能上门维修吗", "tags": ["clear"]}
+{"id": "S08", "intent": "售后", "query": "刚买两天就坏了,能换吗", "tags": ["clear"]}
+{"id": "S09", "intent": "售后", "query": "保修卡丢了还能保吗", "tags": ["clear"]}
+{"id": "S10", "intent": "售后", "query": "我想换个新的", "tags": ["boundary"], "ambiguous": true, "note": "无宾语('换什么'),单看像闲聊;靠'换新=售后处置'归类"}
+{"id": "S11", "intent": "售后", "query": "机器不转了,能修吗", "tags": ["clear"]}
+{"id": "S12", "intent": "售后", "query": "你们的售后维修点在哪", "tags": ["clear"]}
+{"id": "S13", "intent": "售后", "query": "换新的需要付费吗", "tags": ["clear"]}
+{"id": "S14", "intent": "售后", "query": "这质量是不是有问题", "tags": ["boundary"], "ambiguous": true, "note": "疑问句问质量,像商品咨询;隐含不满又像投诉;期望为售后(要处置质量问题)"}
+{"id": "S15", "intent": "售后", "query": "我的猫爬架散架了,怎么修", "tags": ["clear"]}
+{"id": "S16", "intent": "售后", "query": "保修期限过了吗", "tags": ["clear"]}
+{"id": "S17", "intent": "售后", "query": "换新的话要寄回旧的么", "tags": ["clear"]}
+{"id": "S18", "intent": "售后", "query": "这个配件坏了能保修吗", "tags": ["clear"]}
+{"id": "S19", "intent": "售后", "query": "维修费用谁承担", "tags": ["clear"]}
+{"id": "S20", "intent": "售后", "query": "刚过保修期还能修吗", "tags": ["clear"]}
+{"id": "T01", "intent": "投诉", "query": "太差了给我个说法", "tags": ["clear"]}
+{"id": "T02", "intent": "投诉", "query": "服务态度太差了,我要投诉", "tags": ["clear"]}
+{"id": "T03", "intent": "投诉", "query": "你们这是在骗人", "tags": ["clear"]}
+{"id": "T04", "intent": "投诉", "query": "我要投诉快递员", "tags": ["clear"]}
+{"id": "T05", "intent": "投诉", "query": "太离谱了,买两次都出问题", "tags": ["clear"]}
+{"id": "T06", "intent": "投诉", "query": "我要找你们领导", "tags": ["clear"]}
+{"id": "T07", "intent": "投诉", "query": "这什么破质量,我要投诉", "tags": ["clear"]}
+{"id": "T08", "intent": "投诉", "query": "客服一直不回复,太过分了", "tags": ["clear"]}
+{"id": "T09", "intent": "投诉", "query": "你们必须给我个解释", "tags": ["clear"]}
+{"id": "T10", "intent": "投诉", "query": "我要举报你们", "tags": ["clear"]}
+{"id": "T11", "intent": "投诉", "query": "什么破平台,再也不来了", "tags": ["clear"]}
+{"id": "T12", "intent": "投诉", "query": "这服务真是没谁了", "tags": ["clear"]}
+{"id": "T13", "intent": "投诉", "query": "我要投诉,给我个说法", "tags": ["clear"]}
+{"id": "T14", "intent": "投诉", "query": "你们这样处理我不接受", "tags": ["boundary"], "ambiguous": true, "note": "无'投诉'字样,是情绪表达,易被当成'要求重新处理'归人工;考以追责意图判投诉"}
+{"id": "T15", "intent": "投诉", "query": "虚假宣传,我要投诉", "tags": ["clear"]}
+{"id": "T16", "intent": "投诉", "query": "太坑了,我要曝光你们", "tags": ["clear"]}
+{"id": "T17", "intent": "投诉", "query": "我要投诉到消协", "tags": ["clear"]}
+{"id": "T18", "intent": "投诉", "query": "处理这么慢,我要投诉", "tags": ["clear"]}
+{"id": "T19", "intent": "投诉", "query": "你们承诺的没做到,给个说法", "tags": ["clear"]}
+{"id": "T20", "intent": "投诉", "query": "太失望了,这次一定要投诉", "tags": ["clear"]}
+{"id": "H01", "intent": "人工", "query": "转人工", "tags": ["clear"]}
+{"id": "H02", "intent": "人工", "query": "我要找人工客服", "tags": ["clear"]}
+{"id": "H03", "intent": "人工", "query": "帮我转接人工", "tags": ["clear"]}
+{"id": "H04", "intent": "人工", "query": "人工客服在吗", "tags": ["clear"]}
+{"id": "H05", "intent": "人工", "query": "请让人工联系我", "tags": ["clear"]}
+{"id": "H06", "intent": "人工", "query": "帮我登记一下工单", "tags": ["clear"]}
+{"id": "H07", "intent": "人工", "query": "我要专员处理", "tags": ["clear"]}
+{"id": "H08", "intent": "人工", "query": "转个真人吧", "tags": ["clear"]}
+{"id": "H09", "intent": "人工", "query": "能不能转人工服务", "tags": ["clear"]}
+{"id": "H10", "intent": "人工", "query": "我需要人工介入", "tags": ["clear"]}
+{"id": "H11", "intent": "人工", "query": "帮我提交一个工单", "tags": ["clear"]}
+{"id": "H12", "intent": "人工", "query": "找人工,机器人不好使", "tags": ["clear"]}
+{"id": "H13", "intent": "人工", "query": "让客服专员给我回电", "tags": ["clear"]}
+{"id": "H14", "intent": "人工", "query": "人工客服电话是多少", "tags": ["boundary"], "ambiguous": true, "note": "问的是一个信息(电话),像商品咨询;但问的是人工入口,归人工"}
+{"id": "H15", "intent": "人工", "query": "帮我升级到人工", "tags": ["clear"]}
+{"id": "H16", "intent": "人工", "query": "我要真人客服处理这个", "tags": ["clear"]}
+{"id": "H17", "intent": "人工", "query": "转人工处理退款", "tags": ["boundary"], "ambiguous": true, "note": "同句含'人工'与'退款';明确要求转人工优先于诉求类目"}
+{"id": "H18", "intent": "人工", "query": "别机器人了,转人工", "tags": ["clear"]}
+{"id": "H19", "intent": "人工", "query": "帮我建单,让专人跟进", "tags": ["clear"]}
+{"id": "H20", "intent": "人工", "query": "这个要人工处理,机器人说不清", "tags": ["clear"]}
+{"id": "K01", "intent": "闲聊", "query": "你好呀", "tags": ["clear"]}
+{"id": "K02", "intent": "闲聊", "query": "今天天气不错", "tags": ["clear"]}
+{"id": "K03", "intent": "闲聊", "query": "你是谁", "tags": ["clear"]}
+{"id": "K04", "intent": "闲聊", "query": "早上好", "tags": ["clear"]}
+{"id": "K05", "intent": "闲聊", "query": "哈哈哈", "tags": ["clear"]}
+{"id": "K06", "intent": "闲聊", "query": "你吃饭了吗", "tags": ["clear"]}
+{"id": "K07", "intent": "闲聊", "query": "讲个笑话", "tags": ["boundary"], "ambiguous": true, "note": "是'要求做一件事',像'其他';与 X19 成对,标注'闲聊 vs 其他'的边界"}
+{"id": "K08", "intent": "闲聊", "query": "你叫什么名字", "tags": ["clear"]}
+{"id": "K09", "intent": "闲聊", "query": "周末愉快", "tags": ["clear"]}
+{"id": "K10", "intent": "闲聊", "query": "晚安", "tags": ["clear"]}
+{"id": "K11", "intent": "闲聊", "query": "你在干嘛", "tags": ["clear"]}
+{"id": "K12", "intent": "闲聊", "query": "无聊,陪我聊会", "tags": ["clear"]}
+{"id": "K13", "intent": "闲聊", "query": "你多大了", "tags": ["clear"]}
+{"id": "K14", "intent": "闲聊", "query": "谢谢", "tags": ["clear"]}
+{"id": "K15", "intent": "闲聊", "query": "辛苦了", "tags": ["clear"]}
+{"id": "K16", "intent": "闲聊", "query": "你真可爱", "tags": ["clear"]}
+{"id": "K17", "intent": "闲聊", "query": "今天是几号", "tags": ["clear"]}
+{"id": "K18", "intent": "闲聊", "query": "你是什么模型", "tags": ["clear"]}
+{"id": "K19", "intent": "闲聊", "query": "嗯嗯", "tags": ["clear"]}
+{"id": "K20", "intent": "闲聊", "query": "你好,在忙吗", "tags": ["clear"]}
+{"id": "X01", "intent": "其他", "query": "帮我订一张去上海的机票", "tags": ["clear"]}
+{"id": "X02", "intent": "其他", "query": "今天股票行情怎么样", "tags": ["clear"]}
+{"id": "X03", "intent": "其他", "query": "帮我写一份简历", "tags": ["clear"]}
+{"id": "X04", "intent": "其他", "query": "给我推荐一部电影", "tags": ["clear"]}
+{"id": "X05", "intent": "其他", "query": "上海有什么好吃的", "tags": ["clear"]}
+{"id": "X06", "intent": "其他", "query": "帮我算一下 1234 乘以 5678", "tags": ["clear"]}
+{"id": "X07", "intent": "其他", "query": "帮我翻译一段英文", "tags": ["clear"]}
+{"id": "X08", "intent": "其他", "query": "明天会下雨吗", "tags": ["clear"]}
+{"id": "X09", "intent": "其他", "query": "帮我给小孩起个名字", "tags": ["clear"]}
+{"id": "X10", "intent": "其他", "query": "我想学 Python 怎么入门", "tags": ["clear"]}
+{"id": "X11", "intent": "其他", "query": "北京限行怎么查", "tags": ["clear"]}
+{"id": "X12", "intent": "其他", "query": "帮我做个 PPT 大纲", "tags": ["clear"]}
+{"id": "X13", "intent": "其他", "query": "帮我写个朋友圈文案", "tags": ["clear"]}
+{"id": "X14", "intent": "其他", "query": "帮我定个闹钟", "tags": ["clear"]}
+{"id": "X15", "intent": "其他", "query": "附近有什么宠物医院", "tags": ["clear"]}
+{"id": "X16", "intent": "其他", "query": "帮我修一张图片", "tags": ["clear"]}
+{"id": "X17", "intent": "其他", "query": "今天有什么新闻", "tags": ["clear"]}
+{"id": "X18", "intent": "其他", "query": "asdfghjkl", "tags": ["clear"]}
+{"id": "X19", "intent": "其他", "query": "帮我写一首关于猫的诗", "tags": ["boundary"], "ambiguous": true, "note": "'帮我写诗'是明确的服务请求,像'人工';但超出客服范畴,归其他——与 K07 成对"}
+{"id": "X20", "intent": "其他", "query": "你会做饭吗", "tags": ["boundary"], "ambiguous": true, "note": "寒暄式提问,像'闲聊';但内容超出客服范畴,归其他"}
+{"id": "D01", "intent": "物流", "query": "那它现在到哪了", "history": "用户:订单1001到哪了\n客服:已发货,深圳分拨中心\n用户:那我想退了\n客服:好的,帮您看下退款\n", "tags": ["drift"], "note": "历史先'到哪了'(物流)后'想退了'(退款),当前句'它'指代包裹:考'看当前句本身',不是跟着最近一句走"}
+{"id": "D02", "intent": "退款退货", "query": "那这个能退吗", "history": "用户:这款猫粮多少钱一包\n客服:59 元一包,现货\n用户:好的\n", "tags": ["drift"], "note": "历史在问价格(商品咨询),当前句转为'能退吗':考新诉求覆盖旧话题"}
+{"id": "D03", "intent": "售后", "query": "那要修多久", "history": "用户:我的猫爬架坏了\n客服:帮您看下保修\n", "tags": ["drift"], "note": "历史'坏了/看保修'→'要修多久';'多久'是时效词,只看字面会漂到物流"}
+{"id": "D04", "intent": "物流", "query": "它发货了吗", "history": "用户:帮我查订单1001\n客服:已付款,智能猫砂盆\n", "tags": ["drift"], "note": "历史'查订单/已付款'→'发货了吗';'发货'可归订单也可归物流,考上下文下的归属"}
+{"id": "D05", "intent": "退款退货", "query": "那我要退这一单", "history": "用户:退货运费谁出\n客服:质量问题我们承担\n", "tags": ["drift"], "note": "历史在问退货运费(规则),当前句落到'我要退这一单'的具体动作"}
+{"id": "D06", "intent": "人工", "query": "你还是给我建个工单吧", "history": "用户:转人工\n客服:好的,马上为您转接\n用户:算了\n", "tags": ["drift"], "note": "历史里用户先说'转人工'又说'算了'(干扰项),当前句再次要求建工单:考反悔后重提仍归人工"}
+{"id": "D07", "intent": "闲聊", "query": "今天天气不错", "history": "用户:你好\n客服:您好~有什么可以帮您\n", "tags": ["drift"], "note": "历史是服务开场,当前句是寒暄:考上下文不该把闲聊吸走;与无历史的 K02 同句,可对照'有无上下文是否影响判定'"}
+{"id": "D08", "intent": "物流", "query": "什么时候能到", "history": "用户:订单2002什么状态\n客服:已发货\n", "tags": ["drift"], "note": "历史'查订单/已发货'→'什么时候能到';无宾语,靠上下文补全为物流时效"}

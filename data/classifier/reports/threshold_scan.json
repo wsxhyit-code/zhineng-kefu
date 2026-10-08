@@ -1,0 +1,73 @@
+{
+  "ran_at": "2026-09-25T15:00:56",
+  "val_size": 149,
+  "scan": [
+    {
+      "threshold": 0.3,
+      "micro_f1": 0.9322,
+      "tp": 172,
+      "fp": 13,
+      "fn": 12
+    },
+    {
+      "threshold": 0.35,
+      "micro_f1": 0.9315,
+      "tp": 170,
+      "fp": 11,
+      "fn": 14
+    },
+    {
+      "threshold": 0.4,
+      "micro_f1": 0.9341,
+      "tp": 170,
+      "fp": 10,
+      "fn": 14
+    },
+    {
+      "threshold": 0.45,
+      "micro_f1": 0.9222,
+      "tp": 166,
+      "fp": 10,
+      "fn": 18
+    },
+    {
+      "threshold": 0.5,
+      "micro_f1": 0.9244,
+      "tp": 165,
+      "fp": 8,
+      "fn": 19
+    },
+    {
+      "threshold": 0.55,
+      "micro_f1": 0.9122,
+      "tp": 161,
+      "fp": 8,
+      "fn": 23
+    },
+    {
+      "threshold": 0.6,
+      "micro_f1": 0.8991,
+      "tp": 156,
+      "fp": 7,
+      "fn": 28
+    },
+    {
+      "threshold": 0.65,
+      "micro_f1": 0.8935,
+      "tp": 151,
+      "fp": 3,
+      "fn": 33
+    },
+    {
+      "threshold": 0.7,
+      "micro_f1": 0.8632,
+      "tp": 142,
+      "fp": 3,
+      "fn": 42
+    }
+  ],
+  "best_threshold": 0.4,
+  "best_micro_f1": 0.9341,
+  "in_use_threshold": 0.4,
+  "consistent": true
+}

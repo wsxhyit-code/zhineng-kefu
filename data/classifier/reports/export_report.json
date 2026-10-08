@@ -1,0 +1,9 @@
+{
+  "ran_at": "2026-09-25T15:00:08",
+  "checked": 149,
+  "mismatch": 0,
+  "passed": true,
+  "onnx_path": "data\\分类器\\onnx\\model.onnx",
+  "onnx_bytes": 409354806,
+  "opset": 17
+}

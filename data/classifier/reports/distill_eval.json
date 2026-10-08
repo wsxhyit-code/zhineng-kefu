@@ -1,0 +1,35 @@
+{
+  "grid": [
+    0.05,
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.35,
+    0.4,
+    0.45,
+    0.5,
+    0.55,
+    0.6,
+    0.65,
+    0.7,
+    0.75,
+    0.8
+  ],
+  "postprocess": "scripts.classifier.inference_lib.apply_threshold(生产同口径)",
+  "teacher": {
+    "threshold": 0.25,
+    "val_micro_f1": 0.9354838709677419,
+    "test_micro_f1": 0.9030612244897959,
+    "test_macro_f1": 0.9072077394006395
+  },
+  "student": {
+    "threshold": 0.3,
+    "val_micro_f1": 0.915068493150685,
+    "test_micro_f1": 0.8969072164948454,
+    "test_macro_f1": 0.9025842881894914
+  },
+  "delta_test_micro": -0.0062,
+  "noise_2se": 0.0485
+}

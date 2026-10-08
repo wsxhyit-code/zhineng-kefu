@@ -1,0 +1,51 @@
+{
+  "ran_at": "2026-10-02T22:46:37",
+  "test_size": 149,
+  "threshold": 0.3,
+  "batch_for_consistency": 32,
+  "latency_runs": 60,
+  "latency_batch": 1,
+  "variants": [
+    {
+      "variant": "fp32",
+      "op_types_to_quantize": "—",
+      "bytes": 239137376,
+      "mb": 228.1,
+      "logits_max_abs_diff": 0.0,
+      "probs_mean_abs_diff": 0.0,
+      "label_mismatch": 0,
+      "identical": true,
+      "latency_p50_ms": 76.98,
+      "latency_p95_ms": 103.6
+    },
+    {
+      "variant": "int8-matmul",
+      "op_types_to_quantize": [
+        "MatMul"
+      ],
+      "bytes": 110237857,
+      "mb": 105.1,
+      "logits_max_abs_diff": 0.99534,
+      "probs_mean_abs_diff": 0.004411,
+      "label_mismatch": 9,
+      "identical": false,
+      "latency_p50_ms": 51.5,
+      "latency_p95_ms": 72.84
+    },
+    {
+      "variant": "int8-matmul-gather",
+      "op_types_to_quantize": [
+        "MatMul",
+        "Gather"
+      ],
+      "bytes": 60376199,
+      "mb": 57.6,
+      "logits_max_abs_diff": 0.90643,
+      "probs_mean_abs_diff": 0.004313,
+      "label_mismatch": 11,
+      "identical": false,
+      "latency_p50_ms": 52.69,
+      "latency_p95_ms": 81.99
+    }
+  ]
+}
