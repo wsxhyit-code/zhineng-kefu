@@ -268,50 +268,6 @@ curl -s --max-time 90 http://localhost:8000/api/agent \
 | 混合检索 | Recall@5 **0.98** / MRR **0.89** / 答案覆盖度 **0.97** | `data/rag/reports/rag_eval.json` |
 | 主题分类（161 条分层留出集） | micro-F1 **0.964** / macro-F1 **0.962**，13 个设线类目全达标 —— ⚠️ **本轮不可复现**，原因见 EXPERIMENTS.md §1.5 | `data/classifier/reports/eval_report.md` |
 
-## 常见问题
-
-**镜像拉不下来（国内常见）**
-Docker Hub 和 quay.io 经常连不上。先确认镜像站活着 —— `curl -sI https://docker.m.daocloud.io/v2/`
-**返回 401 是正常的**，那是 registry 的鉴权挑战，不是失败。然后走镜像站拉、再打回原名：
-
-```bash
-docker pull docker.m.daocloud.io/library/mysql:8
-docker tag  docker.m.daocloud.io/library/mysql:8  mysql:8
-docker pull docker.m.daocloud.io/milvusdb/milvus:v2.6.22
-docker tag  docker.m.daocloud.io/milvusdb/milvus:v2.6.22  milvusdb/milvus:v2.6.22
-```
-
-打回原名之后 `docker-compose.yml` 一个字都不用改。mysql 镜像有 1.1GB，**给足时间**。
-
-**3306 端口被占**
-本机如果已经有别的 MySQL 容器占着 3306，`docker compose up` 会失败。停掉那个容器，或者改端口。
-
-**中文 Windows 上读文件报 `UnicodeDecodeError`**
-中文 Windows 默认 GBK，读仓库里带中文的 markdown / jsonl 会炸。`Makefile` 和
-`scripts/dev.sh` 里都设了 `PYTHONUTF8=1`，所以走 `make` 的路径不会有问题；
-自己直接跑 Python 的话记得也设上。
-
-**`make dev` 起来了但知识类问答全哑**
-先看 Milvus 是不是真就绪了（`curl http://localhost:9091/healthz`）。
-`make dev` 会等它，但如果你手动起的服务，可能撞上 Milvus 集合还没 load 完的竞态。
-
-**Windows 上 `.sh` 脚本报 `env: bash^M: No such file or directory`**
-行尾被编辑器改成 CRLF 了。`.gitattributes` 已经把 `*.sh` / `Makefile` / `*.py` 等钉死成 LF，
-重新 checkout 一次即可。
-
-**分类器跑不起来，说找不到模型**
-模型权重（约 2GB）不在仓库里，见下一节。
-
-## 仓库里没有什么
-
-| 缺的东西 | 为什么 | 怎么补 |
-| - | - | - |
-| `data/classifier/` 下的模型权重 | 基础模型 + 微调产物 + ONNX + 教师缓存约 **2GB**，不进 Git | 见 [REPRO.md](REPRO.md)，或直接跑 `make classifier-train` |
-| `.env` | 含真实密钥，已在 `.gitignore` | `cp .env.example .env` 再填 |
-| `log/`、`.exp_cache/`、`.hf-cache/` | 运行时产物与可重跑的检索缓存 | 自动生成 |
-
-`data/classifier/reports/` 里的评测报告**保留了**，那是当证据看的。
-
 ## 许可
 
 仓库未附开源许可证，默认保留所有权利；转载或二次分发请先联系仓库作者。
