@@ -1,0 +1,34 @@
+flowchart TB
+    UI["企业客服工作台"] --> API["FastAPI 接口 / SSE"]
+    API --> CTX["会话历史 / 摘要 / 滑窗"]
+    CTX --> ROUTE["指代消解 → 意图分流"]
+    ROUTE -->|商品咨询| RAG["混合检索 / RRF / 重排"]
+    RAG --> GATE{"证据是否充分"}
+    GATE -->|充分| AGENT["主力 Agent / ReAct"]
+    GATE -->|不足| FALLBACK["兜底回复 / 记录知识缺口"]
+    ROUTE -->|订单 / 物流 / 人工| AGENT
+    ROUTE -->|退款 / 售后| ORDER["订单校验 / 必要时选择订单"]
+    ORDER --> POLICY["检索退款政策"]
+    POLICY --> AGENT
+    ROUTE -->|投诉 / 闲聊 / 其他| SCRIPT["固定回复 / 建议操作"]
+    AGENT -->|工具调用| TOOLS["工具节点 / 工单确认 / 执行引擎"]
+    TOOLS -->|内置工具或 MCP 的返回| AGENT
+    TOOLS -->|退款入口| FORM["前端退款表单 / 用户确认"]
+    FORM -->|动作 API| TICKET["登记退款工单"]
+    AGENT -->|最终回答| ANSWER["回复 / 引用 / 操作卡片"]
+    FALLBACK --> ANSWER
+    SCRIPT --> ANSWER
+    ANSWER -->|SSE 展示| UI
+    DOC["文档 / 历史会话"] --> INGEST["切块 / 问答提取 / 审核"]
+    INGEST --> KB["MySQL 原文 / Milvus 索引"]
+    KB --> RAG
+    KB --> POLICY
+    FALLBACK --> POOL["低置信度问题池"]
+    UI -->|负反馈| POOL
+    POOL --> FLYWHEEL["批处理标准化 / 查重"]
+    FLYWHEEL --> REVIEW["人工核准答案"]
+    REVIEW --> KB
+    POOL --> CLASSIFIER["主题分类器旁路归类 / 问题洞察"]
+    AGENT -.-> OBS["日志 / 工具审计 / Langfuse"]
+    OBS --> EVAL["评估趋势 / 成本 / 阈值校准"]
+    EVAL -.-> UI

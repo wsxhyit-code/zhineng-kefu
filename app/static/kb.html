@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>爪印优选 · 知识库录入</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='2' y='4' width='3' height='4' fill='%231d2b28'/><rect x='7' y='2' width='3' height='4' fill='%231d2b28'/><rect x='12' y='4' width='3' height='4' fill='%231d2b28'/><rect x='4' y='9' width='9' height='6' fill='%231d2b28'/><rect x='1' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='6' y='1' width='3' height='4' fill='%233fbf9f'/><rect x='11' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='3' y='8' width='9' height='6' fill='%233fbf9f'/></svg>" />
+  <title>知序客服 · 知识库录入</title>
+  <link rel="icon" href="/static/favicon.svg" />
   <link rel="stylesheet" href="/static/acceptance.css" />
   <style>
     .form { display: grid; gap: 10px; }
@@ -40,32 +40,25 @@
     .hit.top1 { box-shadow: var(--shadow-sm); background: var(--cream); }
     .presets { display: flex; gap: 6px; flex-wrap: wrap; }
   </style>
+  <link rel="stylesheet" href="/static/ui.css" />
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <h1>知识库录入</h1>
-      <span class="sub">贴一段文档就能进库：切块 → 双写 MySQL 与 Milvus → 现场检索自测</span>
+      <h1>知识中心</h1>
+      <span class="sub">管理知识文档、查看索引状态，并验证客服能够检索到的回答依据。</span>
       <span class="spacer"></span>
       <button class="btn" id="refreshBtn">刷新</button>
     </div>
 
     <div class="gatebar" id="gatebar"></div>
 
-    <div class="tip">
-      两条路：<b>手工录入</b>正文贴在这一页上，预览什么样就入库什么样；<b>离线建库</b>把
-      data/kb/ 那几份材料交给 make 目标跑，页面按的和终端敲的是同一条命令。
-      两条路共用一套切块逻辑与双写顺序——先写 MySQL 记「待向量化」，再进 Milvus 回标「已向量化」，
-      中途挂了重跑捡 pending 就能补齐。
-    </div>
+    <div class="tip">录入文档后，先预览知识切分结果，再提交入库。索引完成后，可在下方进行检索测试；未完成的内容可以重试补齐。</div>
 
-    <!-- ① 手工录入 -->
+    <!-- 文档录入 -->
     <div class="panel">
-      <h2>① 手工录入 <span class="pill info">正文贴这里</span></h2>
-      <p class="lede">
-        按标题层级切、超长递归切、块间重叠裁到最近句号、大表格按行拆并复制表头——
-        这四条在下面的预览里逐块标出来。查重按「问法 + 正文」的指纹，同一份正文重复录入会全跳过。
-      </p>
+      <h2>文档录入 <span class="pill info">录入与预览</span></h2>
+      <p class="lede">支持 Markdown 文档。预览切分结果，确认内容完整后再录入；重复内容会自动跳过。</p>
       <div class="form">
         <div class="line">
           <label for="ctype">内容类型</label>
@@ -87,24 +80,18 @@
       <div id="previewBox"></div>
     </div>
 
-    <!-- ② 建库材料 -->
+    <!-- 知识源文档 -->
     <div class="panel">
-      <h2>② 建库材料 <span class="pill info" id="srcPill">—</span></h2>
-      <p class="lede">
-        data/kb/ 下的文档是离线建库的输入。这里的块数是就地切出来的（dry-run，不写库、不碰
-        Milvus、不调上游），点「看切块」把结果送到上面的预览区逐块看。
-      </p>
+      <h2>知识源文档 <span class="pill info" id="srcPill">—</span></h2>
+      <p class="lede">查看现有知识源文档和切分情况，可预览单份文档的知识块。</p>
       <div class="scroll-x"><table class="tbl" id="srcTbl"></table></div>
       <div id="srcJobs"></div>
     </div>
 
-    <!-- ③ 对话挖知识 -->
+    <!-- 对话知识提取 -->
     <div class="panel">
-      <h2>③ 对话挖知识 <span class="pill info" id="stgPill">—</span></h2>
-      <p class="lede">
-        历史客服对话分批喂给 LLM 抽问答对，先落暂存表，再整体去重入库。
-        三个状态的落差就是去重那一刀：抽出多少、留下多少、丢了多少。
-      </p>
+      <h2>对话知识提取 <span class="pill info" id="stgPill">—</span></h2>
+      <p class="lede">从历史会话提取候选问答，去重后进入审核；核准后才能成为客服回答依据。</p>
       <div class="kv" id="stgKv"></div>
       <div id="stgJobs"></div>
       <div style="margin-top:12px">
@@ -113,14 +100,10 @@
       <div id="stgBox"></div>
     </div>
 
-    <!-- ④ 向量化与双写 -->
+    <!-- 知识索引状态 -->
     <div class="panel">
-      <h2>④ 向量化与双写 <span class="pill" id="dwPill">—</span></h2>
-      <p class="lede">
-        MySQL 是原文权威源，Milvus 只存向量。<b>幂等靠 vectorize_status</b>：写 MySQL 记 pending，
-        嵌入后按主键 upsert 进 Milvus、回标 done。故意中断建库再按「向量化待补块」，
-        漏掉的块会被捡起来补齐——这一条不用回终端演。
-      </p>
+      <h2>知识索引状态 <span class="pill" id="dwPill">—</span></h2>
+      <p class="lede">查看原文与向量索引的同步状态。存在待处理知识块时，可补建索引。</p>
       <div class="kv" id="dwKv"></div>
       <div class="jobrow">
         <button class="btn go" id="vecBtn">向量化待补块</button>
@@ -129,13 +112,10 @@
       <div id="dwJobs"></div>
     </div>
 
-    <!-- ⑤ 检索自测 -->
+    <!-- 检索测试 -->
     <div class="panel">
-      <h2>⑤ 检索自测 <span class="pill info">换个说法问一句</span></h2>
-      <p class="lede">
-        问题向量化后到 Milvus 按相似度取 Top-K。「邮费是多少」库里一个字都没写过，
-        靠的是与「运费」那块语义相近——词面查表做不到这件事。
-      </p>
+      <h2>检索测试 <span class="pill info">换个说法问一句</span></h2>
+      <p class="lede">输入一个客户可能提出的问题，对比不同检索策略返回的知识。</p>
       <div class="form">
         <div class="line">
           <input type="text" id="q" placeholder="邮费是多少" />
@@ -155,10 +135,10 @@
       <div id="hitBox"></div>
     </div>
 
-    <!-- ⑥ 最近入库 -->
+    <!-- 最近入库 -->
     <div class="panel">
-      <h2>⑥ 最近入库</h2>
-      <p class="lede">按 id 倒序取最近 12 块，看录进去的东西长什么样、状态到哪一步了。</p>
+      <h2>最近入库</h2>
+      <p class="lede">查看最近录入的知识内容及其索引状态。</p>
       <div class="scroll-x"><table class="tbl" id="recentTbl"></table></div>
     </div>
   </div>
@@ -323,7 +303,7 @@
         return;
       }
       add("已抽出待去重", s.counts.extracted);
-      add("去重保留（已入库）", s.counts.kept);
+      add("去重保留（待审核）", s.counts.kept);
       add("去重丢弃", s.counts.discarded);
       add("批次数", s.batches);
       $("stgPill").textContent = s.total ? ("累计 " + s.total + " 条，最近批次 " + (s.latest_batch || "—"))

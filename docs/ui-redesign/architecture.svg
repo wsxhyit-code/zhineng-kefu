@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1490" viewBox="0 0 1700 1490" role="img" aria-label="知序客服整体架构与业务流程"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8ba7b0"/></marker><marker id="green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3e9c86"/></marker></defs><rect width="1700" height="1490" fill="#f6f9fb"/>
+<text x="70" y="62" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="35" font-weight="600" fill="#183845" text-anchor="start" >知序客服 · 整体架构与业务流程</text>
+<text x="70" y="99" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="19" font-weight="400" fill="#7a909b" text-anchor="start" >企业客服工作台 UI  ·  保留现有 Agent、RAG、业务工具与知识迭代核心</text>
+<rect x="70" y="140" width="1560" height="84" rx="10" fill="#122b37" stroke="#dce7eb"/>
+<text x="850.0" y="170" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#fff" text-anchor="middle" >前端工作台</text>
+<text x="850.0" y="195" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#bde0d5" text-anchor="middle" >会话与来源  /  知识中心  /  人工审核  /  质量与成本  /  分类器实验</text>
+<polyline points="850,224 850,266" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="850" y="251" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#8ba7b0" text-anchor="middle" >HTTP / SSE</text>
+<rect x="70" y="266" width="1560" height="74" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="850.0" y="296" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >FastAPI 接口层</text>
+<text x="850.0" y="321" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >/api/chat · /api/agent · /api/actions · /api/kb · /api/review · 后台查询接口</text>
+<polyline points="605,340 605,435" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="1385,340 1385,435" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="70" y="380" width="1030" height="835" rx="12" fill="#fff" stroke="#dce7eb"/>
+<rect x="1140" y="380" width="490" height="835" rx="12" fill="#fff" stroke="#dce7eb"/>
+<text x="96" y="415" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="500" fill="#426975" text-anchor="start" >在线客服 · LangGraph Workflow</text>
+<text x="1166" y="415" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="500" fill="#426975" text-anchor="start" >知识迭代与运营</text>
+<rect x="280" y="435" width="650" height="72" rx="10" fill="#e7f4ef" stroke="#cbe5dc"/>
+<text x="605.0" y="465" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >会话准备 → 指代消解 → 九类意图识别</text>
+<text x="605.0" y="490" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >历史 / 摘要 / 滑窗 · 图状态持久化</text>
+<path d="M 605 507 V 532 H 190 M 605 532 H 960" fill="none" stroke="#8ba7b0" stroke-width="2"/>
+<polyline points="190.0,532 190.0,556" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="90" y="556" width="200" height="48" rx="10" fill="#f4f8fa" stroke="#dce7eb"/>
+<text x="190.0" y="587.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >投诉 / 闲聊 / 其他</text>
+<polyline points="190.0,604 190.0,651" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="440.0,532 440.0,556" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="330" y="556" width="220" height="48" rx="10" fill="#f4f8fa" stroke="#dce7eb"/>
+<text x="440.0" y="587.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >商品咨询</text>
+<polyline points="440.0,604 440.0,651" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="700.0,532 700.0,556" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="590" y="556" width="220" height="48" rx="10" fill="#f4f8fa" stroke="#dce7eb"/>
+<text x="700.0" y="587.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >订单 / 物流 / 人工</text>
+<polyline points="700.0,604 700.0,651" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="960.0,532 960.0,556" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="850" y="556" width="220" height="48" rx="10" fill="#f4f8fa" stroke="#dce7eb"/>
+<text x="960.0" y="587.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >退款 / 售后</text>
+<polyline points="960.0,604 960.0,651" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="90" y="651" width="200" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="190.0" y="681" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >固定回复</text>
+<text x="190.0" y="706" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >话术 / 建议操作</text>
+<rect x="330" y="651" width="220" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="440.0" y="681" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >知识检索</text>
+<text x="440.0" y="706" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >Query 改写 / 混合召回</text>
+<polyline points="440,723 440,765" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="330" y="765" width="220" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="440.0" y="795" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >重排与证据门控</text>
+<text x="440.0" y="820" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >置信度 / 语义充分性</text>
+<polyline points="550,801 570,801 570,901 590,901" fill="none" stroke="#3e9c86" stroke-width="2"  marker-end="url(#green)"/>
+<text x="512" y="858" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#3e9c86" text-anchor="middle" >证据充分</text>
+<polyline points="440,837 440,915" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="488" y="886" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#8ba7b0" text-anchor="middle" >证据不足</text>
+<rect x="330" y="915" width="220" height="65" rx="10" fill="#fff7e9" stroke="#dce7eb"/>
+<text x="440.0" y="945" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >兜底回复</text>
+<text x="440.0" y="970" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >记录知识缺口</text>
+<rect x="590" y="651" width="220" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="700.0" y="681" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >业务处理路径</text>
+<text x="700.0" y="706" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >查单 / 查物流 / 建工单</text>
+<polyline points="700,723 700,865" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="850" y="651" width="220" height="135" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="960.0" y="681" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >取单 → 政策检索</text>
+<text x="960.0" y="706" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >校验订单归属</text>
+<text x="960.0" y="731" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >缺单号：选择订单</text>
+<text x="960.0" y="756" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >interrupt / resume</text>
+<polyline points="960,786 960,865" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="590" y="865" width="480" height="72" rx="10" fill="#0c8d7b" stroke="#dce7eb"/>
+<text x="830.0" y="895" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#fff" text-anchor="middle" >主力 Agent · ReAct 循环</text>
+<text x="830.0" y="920" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#bde0d5" text-anchor="middle" >依据知识与工具结果生成回复</text>
+<polyline points="830,937 830,990" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="900" y="969" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#8ba7b0" text-anchor="middle" >工具调用</text>
+<rect x="590" y="990" width="480" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="830.0" y="1020" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >工具节点 / 统一执行引擎</text>
+<text x="830.0" y="1045" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >内置工具或 MCP · 工单确认 · 工具审计</text>
+<polyline points="1070,1026 1090,1026 1090,901 1070,901" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<text x="1107" y="979" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#7d97a1" text-anchor="middle" transform="rotate(-90 1107 979)">工具返回</text>
+<polyline points="590,901 560,901 560,1110 720,1110 720,1130" fill="none" stroke="#3e9c86" stroke-width="2"  marker-end="url(#green)"/>
+<text x="647" y="1097" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#3e9c86" text-anchor="middle" >最终回复</text>
+<polyline points="190,723 190,1130" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<polyline points="440,980 440,1130" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="90" y="1130" width="980" height="54" rx="10" fill="#e7f4ef" stroke="#cbe5dc"/>
+<text x="580.0" y="1164.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >SSE 展示：回答 · 引用 · 工具记录 · 操作卡片</text>
+<rect x="1190" y="435" width="390" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1385.0" y="465" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >源文档 / 历史会话</text>
+<text x="1385.0" y="490" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >可录入的知识与候选问答</text>
+<polyline points="1385,507 1385,553" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="1190" y="553" width="390" height="72" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1385.0" y="583" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >切块 / 问答提取 / 审核</text>
+<text x="1385.0" y="608" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >候选知识确认后入库</text>
+<polyline points="1385,625 1385,671" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="1190" y="671" width="390" height="82" rx="10" fill="#e7f4ef" stroke="#cbe5dc"/>
+<text x="1385.0" y="701" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >知识库双写</text>
+<text x="1385.0" y="726" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >MySQL 原文 · Milvus 向量 / BM25</text>
+<polyline points="1190,695 1120,695 1120,632 440,632 440,651" fill="none" stroke="#8ba7b0" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<text x="1025" y="621" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#8ba7b0" text-anchor="middle" >知识检索</text>
+<polyline points="1190,736 1070,736" fill="none" stroke="#8ba7b0" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<rect x="1190" y="820" width="390" height="66" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1385.0" y="850" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >低置信度问题 / 用户负反馈</text>
+<text x="1385.0" y="875" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >问题池：待归并的知识缺口</text>
+<polyline points="550,948 1130,948 1130,802 1385,802 1385,820" fill="none" stroke="#8ba7b0" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<polyline points="1630,182 1650,182 1650,853 1580,853" fill="none" stroke="#8ba7b0" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<text x="1668" y="721" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#7d97a1" text-anchor="middle" transform="rotate(-90 1668 721)">用户负反馈</text>
+<polyline points="1385,886 1385,924" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="1190" y="924" width="390" height="66" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1385.0" y="954" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >批处理标准化 / 查重</text>
+<text x="1385.0" y="979" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >归并同类问题，积累出现频次</text>
+<polyline points="1385,990 1385,1028" fill="none" stroke="#8ba7b0" stroke-width="2"  marker-end="url(#arrow)"/>
+<rect x="1190" y="1028" width="390" height="66" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1385.0" y="1058" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >人工审核与答案核准</text>
+<text x="1385.0" y="1083" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >通过后写回知识库并向量化</text>
+<polyline points="1580,1061 1610,1061 1610,712 1580,712" fill="none" stroke="#3e9c86" stroke-width="2"  marker-end="url(#green)"/>
+<text x="1600" y="916" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#3e9c86" text-anchor="middle" transform="rotate(-90 1600 916)">审核回写</text>
+<polyline points="1190,853 1165,853 1165,1157 1190,1157" fill="none" stroke="#8ba7b0" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+<rect x="1190" y="1130" width="390" height="54" rx="10" fill="#f0f4f9" stroke="#dce7eb"/>
+<text x="1385.0" y="1164.0" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >主题分类器（旁路） / 问题洞察</text>
+<text x="70" y="1258" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="21" font-weight="500" fill="#416574" text-anchor="start" >支撑服务与持久化</text>
+<rect x="70" y="1282" width="360" height="95" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="250.0" y="1312" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >MySQL</text>
+<text x="250.0" y="1337" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >会话 / 知识 / 工单 / 问题池 / 审计</text>
+<rect x="470" y="1282" width="360" height="95" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="650.0" y="1312" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >Milvus</text>
+<text x="650.0" y="1337" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >向量 + BM25 · 混合检索索引</text>
+<rect x="870" y="1282" width="360" height="95" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1050.0" y="1312" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >SQLite</text>
+<text x="1050.0" y="1337" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >checkpointer · 中断与恢复</text>
+<rect x="1270" y="1282" width="360" height="95" rx="10" fill="#fff" stroke="#dce7eb"/>
+<text x="1450.0" y="1312" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="23" font-weight="500" fill="#315c68" text-anchor="middle" >模型服务 / Langfuse</text>
+<text x="1450.0" y="1337" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="17" font-weight="400" fill="#7a929d" text-anchor="middle" >生成、嵌入、重排 / 观测与评估</text>
+<text x="70" y="1425" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="18" font-weight="400" fill="#718993" text-anchor="start" >业务边界：订单与物流为模拟数据；退款登记为工单；人工转接为演示。建工单与退款提交保留用户确认。</text>
+<text x="70" y="1462" font-family="Noto Sans CJK SC, Microsoft YaHei, sans-serif" font-size="16" font-weight="400" fill="#94a5af" text-anchor="start" >依据：app/graph/build.py · routing.py · nodes.py · runtime.py · app/api/ · app/kb/ · app/tools/</text>
+</svg>

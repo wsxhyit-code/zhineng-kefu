@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>爪印优选 · 后台管理</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='2' y='4' width='3' height='4' fill='%231d2b28'/><rect x='7' y='2' width='3' height='4' fill='%231d2b28'/><rect x='12' y='4' width='3' height='4' fill='%231d2b28'/><rect x='4' y='9' width='9' height='6' fill='%231d2b28'/><rect x='1' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='6' y='1' width='3' height='4' fill='%233fbf9f'/><rect x='11' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='3' y='8' width='9' height='6' fill='%233fbf9f'/></svg>" />
+  <title>知序客服 · 后台管理</title>
+  <link rel="icon" href="/static/favicon.svg" />
   <link rel="stylesheet" href="/static/acceptance.css" />
   <style>
     .mods { margin-top: 16px; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
@@ -31,35 +31,45 @@
     .pill.attention { background: var(--paw); }
     .pill.error { background: var(--error); color: #fff; }
   </style>
+  <link rel="stylesheet" href="/static/ui.css" />
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <h1>后台管理</h1>
-      <span class="sub">知识库、检索评估、飞轮、分类器，几块后台都在这里，不用回终端</span>
+      <h1>工作台概览</h1>
+      <span class="sub">连接对话、知识与服务流程，在一个工作空间中完成管理。</span>
       <span class="spacer"></span>
       <button class="btn" id="refreshBtn">刷新</button>
     </div>
 
-    <div class="tip">
-      口径：<b>正常</b>这块是活的且没有待办；<b>要干活</b>有待办或两边数对不上；
-      <b>没数据</b>还没跑过，进去按一下就有；<b>读数失败</b>这块的依赖没起（mysql / Milvus /
-      嵌入上游 / 分类器:8110），只影响它自己那张卡。
+    <section class="dashboard-hero">
+      <div><div class="eyebrow">INTELLIGENT SERVICE, IN ONE PLACE</div><h2>让每一次服务，都更进一步。</h2><p>从有依据的回答，到可确认的业务操作。<br>连接知识与对话，让服务持续积累。</p><div class="hero-actions"><a href="/">开始一段服务 →</a><a class="secondary" href="/kb">管理知识库</a></div></div>
+      <div class="hero-art" aria-hidden="true"><div class="hero-orbit"><div class="hero-core">✦</div><div class="orbit-chip">知识检索</div><div class="orbit-chip">业务工具</div><div class="orbit-chip">人工确认</div></div></div>
+    </section>
+    <div class="overview-strip" aria-label="模块状态概览">
+      <div class="overview-cell"><span>可用模块</span><strong id="overview-ready">—</strong><small>状态正常的服务模块</small></div>
+      <div class="overview-cell"><span>待处理模块</span><strong id="overview-attention">—</strong><small>有待办或需要同步</small></div>
+      <div class="overview-cell"><span>待初始化模块</span><strong id="overview-missing">—</strong><small>尚未生成数据或产物</small></div>
+      <div class="overview-cell"><span>依赖异常模块</span><strong id="overview-error">—</strong><small>数据读取失败的模块</small></div>
     </div>
-
+    <div class="section-heading"><h2>服务与管理</h2><span>各模块独立运行，状态来自现有后台接口</span></div>
     <div class="mods" id="mods"><div class="miss">加载中…</div></div>
+    <p class="dashboard-footnote">报表展示最近一次生成的结果。暂无数据时，可进入对应模块生成；依赖异常只影响该模块。</p>
   </div>
 
   <div id="toast"></div>
   <script src="/static/admin.js"></script>
   <script src="/static/acceptance.js"></script>
   <script>
-    const LABEL = { ok: "正常", attention: "要干活", missing: "没数据", error: "读数失败" };
+    const LABEL = { ok: "正常", attention: "待处理", missing: "暂无数据", error: "依赖异常" };
+    const ICONS = {kb:"▤",rageval:"◎",review:"✓",observability:"↗",topics:"≋",classifier:"◇"};
+    const TITLES = {kb:"知识中心",rageval:"检索质量",review:"知识审核",observability:"观测与成本",topics:"问题洞察",classifier:"分类器实验"};
 
     function card(m) {
       const box = el("div", "mod " + m.status);
+      box.appendChild(el("div", "mod-icon", ICONS[m.key] || "◇"));
       const head = el("div", "head");
-      head.appendChild(el("h3", null, m.title));
+      head.appendChild(el("h3", null, TITLES[m.key] || m.title));
       head.appendChild(el("span", "spacer"));
       head.appendChild(el("span", "pill " + m.status, LABEL[m.status] || m.status));
       box.appendChild(head);
@@ -77,7 +87,7 @@
       }
       if (m.note) box.appendChild(el("div", "note", m.note));
       const foot = el("div", "foot");
-      const a = el("a", "btn go", "进入 " + m.title + " →");
+      const a = el("a", "btn go", "打开" + (TITLES[m.key] || m.title) + " →");
       a.href = m.page;
       foot.appendChild(a);
       box.appendChild(foot);
@@ -90,8 +100,13 @@
         const d = await api("/api/admin/overview");
         box.textContent = "";
         for (const m of d.modules) box.appendChild(card(m));
+        for (const st of ["ok", "attention", "missing", "error"]) {
+          const id = {ok:"ready",attention:"attention",missing:"missing",error:"error"}[st];
+          $("overview-" + id).textContent = d.modules.filter(m => m.status === st).length;
+        }
       } catch (e) {
         box.textContent = "";
+        for (const id of ["ready","attention","missing","error"]) $("overview-" + id).textContent = "—";
         box.appendChild(missingBox("取数失败：" + e.message));
       }
     }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>爪印优选 · 飞轮待审队列</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'><rect x='2' y='4' width='3' height='4' fill='%231d2b28'/><rect x='7' y='2' width='3' height='4' fill='%231d2b28'/><rect x='12' y='4' width='3' height='4' fill='%231d2b28'/><rect x='4' y='9' width='9' height='6' fill='%231d2b28'/><rect x='1' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='6' y='1' width='3' height='4' fill='%233fbf9f'/><rect x='11' y='3' width='3' height='4' fill='%233fbf9f'/><rect x='3' y='8' width='9' height='6' fill='%233fbf9f'/></svg>" />
+  <title>知序客服 · 飞轮待审队列</title>
+  <link rel="icon" href="/static/favicon.svg" />
   <style>
     :root {
       --ink: #1d2b28;
@@ -131,12 +131,13 @@
     }
     #toast.err { background: var(--error); color: #fff; }
   </style>
+  <link rel="stylesheet" href="/static/ui.css" />
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <h1>飞轮待审队列</h1>
-      <span class="sub">答不上的问题 → 标准化查重 → 人工审核 → 写回知识库</span>
+      <h1>知识审核</h1>
+      <span class="sub">审核对话中发现的知识缺口，核准答案后更新客服知识库。</span>
       <span class="spacer"></span>
       <div class="seg" id="statusSeg">
         <button data-st="待审" class="on">待审</button>
@@ -147,11 +148,7 @@
       <button class="btn" id="refreshBtn">刷新</button>
     </div>
 
-    <div class="gates">
-      审核前先过三道闸:<b>① 垃圾过滤</b>乱输入、测试胡打、不当言论 → 驳回;
-      <b>② 时效</b>强时效问题(活动截止类)补了就过期,不沉淀 → 驳回;
-      <b>③ 频次</b>低频冷门问题不值得占知识库、耗人工 → 驳回。剩下的才是真缺口,补上核准答案点通过。
-    </div>
+    <div class="gates"><b>审核建议</b> 确认问题有效、知识仍在有效期内，并优先处理高频问题。核准答案后点击通过，系统将更新知识库。</div>
 
     <div class="list" id="list"><div class="empty">加载中…</div></div>
   </div>
@@ -264,7 +261,7 @@
     function renderItems(items) {
       listEl.textContent = "";
       if (!items.length) {
-        listEl.appendChild(el("div", "empty", "这个状态下暂时没有条目喵~"));
+        listEl.appendChild(el("div", "empty", "当前状态下暂无待处理记录。"));
         return;
       }
       for (const it of items) {

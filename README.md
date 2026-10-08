@@ -1,5 +1,7 @@
 # 智能电商客服助手
 
+界面已更新为「知序客服」企业服务工作台，保留原有业务核心与 API。改造说明、预览、验证结果及整体架构图见 [UI 改造交付说明](docs/ui-redesign/README.md)。
+
 一个能查订单物流、答政策 FAQ、走退款子流程、从对话里挖知识补库，
 还能微调一个主题分类器的完整电商智能客服系统。
 
@@ -18,6 +20,76 @@
 - 工具系统：MCP 动态发现、统一执行引擎、审计日志
 - Langfuse 自部署观测、数据飞轮、按意图的成本账
 - 主题分类器：造语料、微调、阈值扫描、ONNX 推理服务
+
+## 界面速览
+
+下面每一张都是**本机真实运行**的截图：真模型、真 MySQL / Milvus、真 MCP 工具，接口没有 mock。
+界面是「知序客服」企业服务工作台，业务核心与 API 契约未变 ——
+改造范围、文件组织与浏览器回归结果见 [UI 改造交付说明](docs/ui-redesign/README.md)。
+
+### 会话工作台
+
+三栏布局：左边是当前浏览器的会话记录，中间流式对话，右边是**本轮服务信息**（知识来源 / 业务工具 / 处理操作）。
+工具回执、知识引用、待确认操作都长在对话流里，能点开、能回看。
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/01-chat-member-benefits.png" width="380" alt="会员权益问答"><br>
+<b>知识回答可溯源</b><br>问「会员有什么权益？」，回答按会员等级 / 各项权益 / 积分规则分组；正文里的 <code>[1][2]</code> 是可点角标，右栏 10 条来源精确到条款（如 <code>售后手册 / 会员专属售后权益</code>）。</td>
+<td width="50%"><img src="docs/screenshots/02-chat-refund-policy.png" width="380" alt="退款政策问答"><br>
+<b>政策问答 + 快捷追问</b><br>只发「退款」两个字也能命中退款流程、适用条件与时效三段政策，答案带角标，并把下一步动作递到对话里。</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/03-chat-order-select.png" width="380" alt="退款前选择订单"><br>
+<b>退款先选订单：中断 — 续跑</b><br>用户说「我忘了订单号了」，工作流在这里 <code>interrupt</code>，把该用户名下的订单渲染成卡片让用户点选；右栏「处理操作」提示服务已暂停、点选后从暂停处继续。</td>
+<td width="50%"><img src="docs/screenshots/04-chat-refund-review.png" width="380" alt="退款判断与工单预览"><br>
+<b>可退判断与工单预览</b><br>选定订单 1001 后，助手核对商品、金额、状态、下单时间，按规则给出是否可退及依据（引用政策条款），末尾给出「提交退款工单」按钮 —— 写操作前先让人确认。</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/05-refund-modal.png" width="380" alt="退款工单表单"><br>
+<b>退款工单表单</b><br>点确认后弹出表单：订单号只读带入、退款原因必选，可取消。提交只是登记退款工单，不直接动支付。</td>
+<td><b>三条确认闸门</b><br>选订单（<code>select_order</code>）、建工单（<code>confirm_ticket</code>）、退款表单（<code>submit_refund</code>）各对应一次人工确认，后端不替用户做决定；确认动作走 <code>/api/actions/*</code> 续跑同一张图。</td>
+</tr>
+</table>
+
+### 知识与检索
+
+知识怎么进库、进得对不对、检索召回的是不是该召回的那块 —— 这些在页面当场就能看见。
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/06-kb-ingest-preview.png" width="380" alt="知识录入切块预览"><br>
+<b>入库前先看切块</b><br>贴一份售后手册点「切换预览（不写库）」：8 块 / 7 节、重复按指纹拦截、关键条款 4 块、库里已有 8 块会跳过；每一块都带 <code>section_path</code>、问答与字数。</td>
+<td width="50%"><img src="docs/screenshots/07-kb-search-test.png" width="380" alt="混合检索与重排自测"><br>
+<b>混合检索 + 重排自测</b><br>输入「多发发货」，走混合 + 重排返回 5 块，每块都带融合分与重排分（0.9775 / 0.3816…）和来源路径，召回对不对一眼能判。</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/08-review-queue.png" width="380" alt="知识审核队列"><br>
+<b>知识审核队列</b><br>低置信度问题与负反馈落进问题池，标准化查重后进这里人工核准；按待审 / 通过 / 驳回 / 全部筛选。</td>
+<td width="50%"><img src="docs/screenshots/09-rag-eval-recall.png" width="380" alt="四策略检索评估"><br>
+<b>四策略对照</b><br>纯向量 / 纯 BM25 / 混合 / 混合+重排 在同一份 300 题评估集上的 Recall@5，分政策类、型号类、口语类、跨文档类逐类看；总体 0.97 / 0.89 / 0.94 / 0.98。</td>
+</tr>
+</table>
+
+### 观测与实验
+
+回答得好不好要能算账：花在哪些意图上、阈值定在哪、错在哪些边界上。
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/10-observability-cost.png" width="380" alt="意图成本账"><br>
+<b>按意图的成本账</b><br>意图分流节点会先打一个 <code>intent</code> 标签，聚合后就能看出钱花在哪类问题上（商品咨询 47%、物流 42%…），优化时优先砍最贵的路。</td>
+<td width="50%"><img src="docs/screenshots/11-observability-threshold.png" width="380" alt="置信度阈值校准"><br>
+<b>证据置信度阈值校准</b><br>阈值不是拍脑袋定的：在评估集上扫一遍，推荐值 0.08、可答通过率 93%、应拒放行率 5%；下面是可答 / 应拒两桶的分布与扫描曲线。</td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/12-classifier-errors.png" width="380" alt="分类器错例复核"><br>
+<b>错例复核与边界摩擦</b><br>把「漏掉的类 ↔ 抢标签的类」按对数统计，逐条给出标准答案、模型预测与修法；例如「双十一前买的猫粮，现在更便宜能价保吗？」被判成「优惠活动」而非「价保」。</td>
+<td><b>这些页面的入口</b><br>聊天 <code>/</code>、后台首页 <code>/admin</code>、知识中心 <code>/kb</code>、知识审核 <code>/review</code>、检索质量 <code>/rag-eval</code>、观测与成本 <code>/observability</code>、问题洞察 <code>/topics</code>、分类器实验 <code>/acceptance</code>。</td>
+</tr>
+</table>
+
+> 截图为 760px 宽的缩略图，点开是原图（2559×1402）。
 
 ## 技术栈
 
